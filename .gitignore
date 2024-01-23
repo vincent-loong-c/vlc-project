@@ -1,0 +1,35 @@
+# Ignore FRONTEND
+frontend/node_modules/
+frontend/__sapper__/
+frontend/.svelte/
+frontend/web_modules/
+frontend/public/build/
+frontend/dist/
+frontend/build/
+frontend/tsconfig.json
+frontend/vite.config.js
+frontend/svelte.config.js
+frontend/svelte.config.cjs
+frontend/src/node_modules/
+frontend/src/web_modules/
+frontend/src/server.ts
+frontend/src/service-worker.ts
+frontend/src/global.d.ts
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+
+# Ignore BACKEND file
+backend/node_modules/
+backend/public/storage
+backend/public/hot
+backend/storage/*.key
+backend/vendor/
+backend/.env
+backend/.env.backup
+backend/.gitattributes
+backend/.gitignore
+backend/docker-compose.yml
+backend/Dockerfile
+backend/homestead.yml
+backend/webpack.mix.js
