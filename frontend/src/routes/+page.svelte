@@ -2,6 +2,46 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { createAccordion, melt } from '@melt-ui/svelte';
+
+	let message = '';
+
+	// Fetch data from Laravel API
+	async function fetchData() {
+		const response = await fetch('http://vlc-project.test/be/api/example');
+		const data = await response.json();
+		message = data.message;
+	}
+
+	const {
+    elements: { content, item, trigger, root },
+    helpers: { isSelected },
+  } = createAccordion({
+    defaultValue: 'item-1',
+  });
+	const items = [
+    {
+      id: 'item-1',
+      title: 'What is it?',
+      description:
+        'A collection of accessible & unstyled component builders for Svelte applications.',
+    },
+    {
+      id: 'item-2',
+      title: 'Can I customize it?',
+      description: 'Totally, it is 100% stylable and overridable.',
+    },
+    {
+      id: 'item-3',
+      title: 'Svelte is awesome, huh?',
+      description: 'Yes, and so are you!',
+    },
+  ];
+ 
+  let className = '';
+  export { className as class };
+
+	fetchData();
 </script>
 
 <svelte:head>
@@ -10,22 +50,9 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+	<h1 class="text-3xl font-bold underline">{message}</h1>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	
 </section>
 
 <style>
